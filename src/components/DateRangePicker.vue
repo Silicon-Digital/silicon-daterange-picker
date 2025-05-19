@@ -587,17 +587,27 @@ export default {
         }
       }
     },
-    hoverDate (value) {
-      console.log('hovering over date', value)
-      if (this.readonly)
-        return false
-      let dt_end = this.normalizeDatetime(value, this.end);
-      let dt_start = this.normalizeDatetime(value, this.start);
-      if (this.in_selection) {
-        this.start = new Date(Math.min(this.in_selection.valueOf(), dt_end.valueOf(), dt_start.valueOf()))
-        this.end = new Date(Math.max(this.in_selection.valueOf(), dt_end.valueOf(), dt_start.valueOf()))
-      }
-      /**
+      hoverDate (value) {
+        // eslint-disable-next-line no-console
+        console.log('hovering over date', value, this.start, this.end)
+        if (this.readonly)
+          return false
+        let dt_end = this.normalizeDatetime(value, this.end);
+        let dt_start = this.normalizeDatetime(value, this.start);
+
+        // eslint-disable-next-line no-console
+        console.log('dt start', dt_start)
+
+        // eslint-disable-next-line no-console
+        console.log('dt end', dt_end)
+
+        if (this.in_selection) {
+          this.start = new Date(Math.min(this.in_selection.valueOf(), dt_end.valueOf(), dt_start.valueOf()))
+          this.end = new Date(Math.max(this.in_selection.valueOf(), dt_end.valueOf(), dt_start.valueOf()))
+          // eslint-disable-next-line no-console
+          console.log(' in selection', this.start, this.end)
+        }
+        /**
        * Emits event when the mouse hovers a date
        * @param {Date} value the date that is being hovered
        */
