@@ -588,6 +588,7 @@ export default {
       }
     },
     hoverDate (value) {
+      console.log('hovering over date', value)
       if (this.readonly)
         return false
       let dt_end = this.normalizeDatetime(value, this.end);
